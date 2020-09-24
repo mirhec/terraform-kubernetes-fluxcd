@@ -52,6 +52,7 @@ resource "kubernetes_secret" "flux_ssh" {
 
 resource "helm_release" "flux" {
   name      = "flux"
+  repository = "https://charts.fluxcd.io"
   chart     = "fluxcd/flux"
   version   = var.flux_chart_version
   namespace = var.flux_namespace
