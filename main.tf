@@ -67,10 +67,11 @@ resource "helm_release" "flux" {
 }
 
 resource "helm_release" "helm_operator" {
-  name      = "helm-operator"
-  chart     = "fluxcd/helm-operator"
-  version   = var.helm_operator_chart_version
-  namespace = var.flux_namespace
+  name       = "helm-operator"
+  repository = "https://charts.fluxcd.io"
+  chart      = "fluxcd/helm-operator"
+  version    = var.helm_operator_chart_version
+  namespace  = var.flux_namespace
 
   values = [
     yamlencode(local.helm_operator_values),
